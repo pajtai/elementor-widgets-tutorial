@@ -1,0 +1,11 @@
+.DS_Store
+.ansible
+.bundle
+.envrc
+.github/
+.idea/
+.travis.yml
+.vagrant
+npm-debug.log
+package.box
+playbook.retry
