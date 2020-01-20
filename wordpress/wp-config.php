@@ -74,6 +74,8 @@ define( 'SAVEQUERIES', False );
 // These lines are inserted by VCCW.
 // You can place additional PHP code here!
 
+define('WP_SITEURL', 'http://192.168.33.10/');
+define('WP_HOME', 'http://192.168.33.10/');
 
 /* That's all, stop editing! Happy publishing. */
 
@@ -84,3 +86,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
+
