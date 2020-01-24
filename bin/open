@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+open http://192.168.33.10/wp-admin
+
