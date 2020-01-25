@@ -45,24 +45,6 @@
       --version={{ vccw.version }}
       --force
 
-  # wp-config.php
-  - name: Create temporary file for extra-php in wp-config.php
-    template:
-      src: templates/extra-wp-config.php
-      dest: "/tmp/extra-wp-config.php"
-  - name: Run `wp core config`
-    shell: |
-       wp core config \
-       --force \
-       --path={{ path }} \
-       --dbhost={{ vccw.db_host }} \
-       --dbname={{ vccw.db_name }} \
-       --dbuser={{ vccw.db_user }} \
-       --dbpass={{ vccw.db_pass }} \
-       --dbprefix={{ vccw.db_prefix }} \
-       --locale={{ vccw.lang }} \
-       --extra-php < /tmp/extra-wp-config.php
-
   # Reset Database
   - name: Run `wp db reset`
     command: wp db reset --yes --path={{ path }}
