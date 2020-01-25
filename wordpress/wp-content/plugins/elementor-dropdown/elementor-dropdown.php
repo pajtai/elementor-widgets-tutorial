@@ -8,7 +8,7 @@
  * Author URI:  https://pajtai.github.io/
  * Text Domain: elementor-dropdown
  */
-namespace SolidDropdown;
+namespace Solid_Dropdown;
 use Elementor\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 add_action( 'elementor/widgets/widgets_registered', function() {
 	require_once('widget.php');
 
-	$drop_down_widget =	new Elementor_Dropdown_Widget();
+	$drop_down_widget =	new Dropdown_Widget();
 
 	// Let Elementor know about our widget
 	Plugin::instance()->widgets_manager->register_widget_type( $drop_down_widget );

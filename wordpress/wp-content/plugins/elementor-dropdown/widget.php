@@ -1,9 +1,12 @@
 <?php
-namespace SolidDropdown;
+namespace Solid_Dropdown;
+
+use Elementor\Repeater;
+use Elementor\Widget_Base;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Elementor_Dropdown_Widget extends \Elementor\Widget_Base {
+class Dropdown_Widget extends Widget_Base {
 
 	public static $slug = 'elementor-dropdown';
 
@@ -20,28 +23,43 @@ class Elementor_Dropdown_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'content_section',
 			[
-				'label' => __( 'Options', 'plugin-name' ),
+				'label' => __( 'Options', self::$slug ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
-		$this->add_control(
-			'widget_value',
+		$repeater = new Repeater();
+
+		$repeater->add_control(
+			'option_value',
 			[
 				'label' => __( 'Option Value', self::$slug ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => __( 'value', self::$slug ),
+				'default' => __( "The Option's Value", self::$slug ),
 				'placeholder' => __( 'Value Attribute', self::$slug ),
 			]
 		);
 
-		$this->add_control(
-			'widget_contents',
+		$repeater->add_control(
+			'option_contents',
 			[
 				'label' => __( 'Option Contents', self::$slug ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => __( 'contents', self::$slug ),
+				'default' => __( "The Option's Contents", self::$slug ),
 				'placeholder' => __( 'Option Contents', self::$slug ),
+			]
+		);
+
+		$this->add_control(
+			'options_list',
+			[
+				'label' => __( 'Repeater List', self::$slug ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[]
+				],
+				'title_field' => '{{{ option_contents }}}'
 			]
 		);
 
