@@ -28,6 +28,7 @@ class Dropdown_Widget extends Widget_Base {
 			]
 		);
 
+		// Use the repeater to define one one set of the items we want to repeat look like
 		$repeater = new Repeater();
 
 		$repeater->add_control(
@@ -50,6 +51,7 @@ class Dropdown_Widget extends Widget_Base {
 			]
 		);
 
+		// Add the
 		$this->add_control(
 			'options_list',
 			[
@@ -64,5 +66,14 @@ class Dropdown_Widget extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+	}
+
+	protected function render() {
+		$options_list = $this->get_settings_for_display('options_list');
+		echo "<select>";
+		foreach ($options_list as $option_item) {
+			echo "<option value='{$option_item['option_value']}'>{$option_item['option_contents']}</option>";
+		}
+		echo "<select>";
 	}
 }
