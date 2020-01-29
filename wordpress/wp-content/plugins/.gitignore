@@ -1,0 +1,8 @@
+*
+!.gitignore
+!akismet
+!elementor
+!elementor-dropdown
+!logbook
+!index.php
+
